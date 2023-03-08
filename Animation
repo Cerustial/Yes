@@ -1,0 +1,52 @@
+import simplegui
+import random
+
+x = 50
+width = 600
+height = 600
+
+def draw_handler(canvas):
+    global x
+    x = x + 5
+
+    canvas.draw_line([200, 400], [200, 100], 60, "black")
+    canvas.draw_line([150, 20], [150, 120], 80, "blue")
+    canvas.draw_line([250, 20], [250, 120], 80, "green")
+    canvas.draw_polygon([(x, 200), (x + 450, 200), (x + 450, 350), (x, 350)], 1, "white", "yellow")
+    canvas.draw_circle((x - 50, 350), 200, 1, "purple", "yellow")
+    canvas.draw_circle((x - 50, 400), 30, 1, "green", "lime")
+    canvas.draw_circle((10, 400), 50, 1, "red", "cyan")
+    canvas.draw_circle((500, 500), 100, 1, "green", "black")
+    for i in range (100):
+        a = random.randint(0, width)
+        b = random.randint(0, height)
+        c = random.randint(0, width)
+        d = random.randint(0, height)
+        e = random.randint(0, width)
+        f = random.randint(0, height)
+        g = random.randint(0, width)
+        h = random.randint(0, height)
+        i = random.randint(0, width)
+        j = random.randint(0, height)
+        k = random.randint(0, width)
+        l = random.randint(0, height)
+        canvas.draw_circle((a, b), 10, 1, "red")
+        canvas.draw_circle((c, d), 10, 1, "yellow",)
+        canvas.draw_circle((e, f), 10, 1, "blue")
+        canvas.draw_circle((g, h), 10, 1, "green")
+        canvas.draw_circle((i, j), 10, 1, "orange")
+        canvas.draw_circle((k, l), 10, 1, "purple")
+        canvas.draw_circle((b, c), 10, 1, "blue", "green")
+        canvas.draw_circle((d, e), 10, 1, "yellow", "orange")
+        canvas.draw_circle((f, g), 10, 1, "red", "yellow")
+        canvas.draw_circle((h, i), 10, 1, "orange", "purple")
+        canvas.draw_circle((j, k), 10, 1, "purple", "white")
+        canvas.draw_circle((l, a), 10, 1, "yellow", "blue")
+
+    if x > 650:
+        x = -50
+        
+frame = simplegui.create_frame('Creativity', 600, 600)
+frame.set_canvas_background("black")
+frame.set_draw_handler(draw_handler)
+frame.start()
