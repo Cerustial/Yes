@@ -1,0 +1,41 @@
+from microbit import *
+import random 
+import music
+import radio
+
+all_on = Image()
+all_on.fill(9)
+
+pin0.read_digital()
+delay = 100
+choice = 0
+count = 0
+
+while True:
+    value = pin0.read_analog()
+    if value < 500:
+        display.show(all_on)
+    else:
+        display.clear()
+    light_level = int(value / 113)
+    lamp_level = 9 - light_level
+    
+    all_on.fill(lamp_level)
+radio.on()
+radio.config(channel=16)
+SENSITIVITY = 100
+tune = ['c5:4', 'e:2', 'g', 'c6:4']
+music.play(tune)
+
+while True:
+    if button_a.is_pressed():
+        music.stop()
+        if button_b.is_pressed():
+            break
+    else:
+        x = accelerometer.get_x()
+        freq = x + 1024
+        if freq < 10:
+            freq = 10
+        
+        music.pitch(freq, -1)
